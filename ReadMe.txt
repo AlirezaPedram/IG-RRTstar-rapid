@@ -7,7 +7,7 @@ Codes related with the Path-planning simulation:
 
 main.m: The main function to run IG-RRT*
 
-obstacle_multi.m & obstacle_polyshape.m :  specify the obstacles position and their shape for "multiple obstacles" enviroment
+obstacle_multi.m & obstacle_polyshape.m :  specify the obstacles position and their shape for a sample "multiple obstacles" enviroment
 
 sample_x_P_randomly.m: It samples x and P randomly 
 
@@ -31,8 +31,6 @@ find_optimal_path_2D.m: The function which find the optimal path from the existi
 
 check_lossless.m: check if a transition is lossless 
 
-obstacle_multi.m: a definition of a sample enviroment
-obstacle_polyshape: definition of obstacles to use polyshape functionalities of MATLAB
 
 ******** The function related for obstacle checking ********
 boundary_check.m: It checks whether an ellipse intersect with regions's boundary
