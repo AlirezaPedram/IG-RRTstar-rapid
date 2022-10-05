@@ -2,7 +2,7 @@ clear all
 close all
 clc
 
-N = 10000; % Maximum number of nodes
+N = 1000; % Maximum number of nodes
 
 %% Saving parameters
 % Variables used for save data
@@ -112,21 +112,6 @@ chi = chi2inv(0.9,2);
         
         % The position of the initial node
         node(1).x = [0.15, 0.5];
-
-% %         %%%%%%%%%%%% For diagonal line case %%%%%%%%%%%%%%
-% %         obstacle_edge = obstacle_diag_line();  
-% %         obs_polyshape= obstacle_poly_diag_line();
-% %         % Target area [xmin, xmax; ymin, ymax]
-% %         target = [1.7, 2; 0.425, 0.5]; 
-% %         % The size of area
-% %         bound(1).x = [0,2];
-% %         bound(2).x = [0,0.5];
-% %         % The variable range of diagonal elements in covariance matrix
-% %         bound(1).P = [10^-9,10^-1];
-% %         bound(2).P = [10^-9,10^-1];
-% %         % The position of the origin node
-% %         node(1).x = [0.1,0.025]; 
-% %         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         
 %% The setting for initial node
 node(1).P = [bound(1).P(1),0;0,bound(2).P(1)];
@@ -259,15 +244,19 @@ for ii=2:N
                 % From their children list we should remove "rewired_better_ID"
                 old_parent_ID = [node(rewired_better_ID).parent].'; % old_parent: Vector size: same length with rewired_better_ID
 
-                % Matrix Size (2D): [length( node(1).children ) * length(rewired_better_ID)]
-                mat_parents_rewired_better = [node(old_parent_ID).children];
-
                 % For the node we should rewire
                 for k=1:length(rewired_better_ID)
+                    
+                    % Matrix Size (2D): [length( node(1).children ) * length(rewired_better_ID)]
+                    mat_parents_rewired_better = [node(old_parent_ID).children];
                     
                     % log in the new parent and the new value
                     node(rewired_better_ID(k)).parent = ii;
                     node(rewired_better_ID(k)).value = val_new(rewired_ID_in_nbors_rw(k));
+                    
+                    % update children list of node ii
+                    node(ii).children_num = node(ii).children_num + 1;
+                    node(ii).children(node(ii).children_num) = int16(rewired_better_ID(k));
                     
                     % refinement to make lossless transition from the new
                     % parent
