@@ -25,6 +25,8 @@ error_ellipse.m: Calculate the length of the long & short axes, angle, and bound
 
 dist_ig_mat.m & dist_ig_mat2.m: The functions which calculate the RI-distance. The difference between these two functions is whether we want to measure the distance from the set of nodes to one node, or from one node to the set of nodes.
 
+Q_hat_sol.m: It computes information cost using SVD
+
 branch_and_bound_2D.m: It conducts branch and bound algorithm
 
 find_optimal_path_2D.m: The function which find the optimal path from the existing nodes
