@@ -1,5 +1,6 @@
 ===============================================================================================================================
 Basic information
+First, create a empty folder "data", where the data will be safe.
 By running "main.m", you can start the modified IG-RRT* path-planning algorithm. 
 ===============================================================================================================================
 
